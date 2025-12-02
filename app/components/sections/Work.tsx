@@ -1,6 +1,6 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useTheme } from "../layout/themes/ThemeContext";
 import { ExternalLink, Github } from "lucide-react";
 import Image from "next/image";
@@ -25,6 +25,28 @@ interface Category {
 
 export default function WorkSection() {
   const { themeColors } = useTheme();
+  const titleRef = useRef(null);
+  const titleInView = useInView(titleRef, {
+    once: true,
+    amount: 0.3,
+  });
+
+  // Letter animation variants for heading
+  const letterVariants = {
+    hidden: {
+      opacity: 0,
+      y: 40,
+    },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        delay: i * 0.08,
+        ease: [0.25, 0.1, 0.25, 1],
+      },
+    }),
+  };
 
   // Organized project data by categories
   const categories: Category[] = [
@@ -110,7 +132,8 @@ export default function WorkSection() {
 
   return (
     <motion.section
-      className="py-20 px-4 lg:px-20 w-full"
+      id="work"
+      className="py-20 px-6 lg:px-20 w-full overflow-x-hidden"
       style={{ backgroundColor: themeColors.background }}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
@@ -118,31 +141,40 @@ export default function WorkSection() {
       viewport={{ once: true }}
     >
       <div className="max-w-7xl mx-auto">
+        {/* Main heading with left alignment matching About section */}
         <motion.div
-          className="mb-16 text-center"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          ref={titleRef}
+          className="mb-16 lg:mb-20 overflow-hidden"
         >
-          <h2
-            className="text-4xl md:text-5xl font-medium mb-4"
-            style={{ color: `${themeColors.foreground}90` }}
-          >
-            My{" "}
-            <span
-              className={`bg-gradient-to-r ${themeColors.textGradient} bg-clip-text text-transparent`}
-            >
-              Work
-            </span>
-          </h2>
-          <p
-            className="text-lg md:text-xl max-w-2xl mx-auto"
-            style={{ color: `${themeColors.foreground}70` }}
+          <motion.h1 className="text-6xl lg:text-8xl xl:text-9xl font-bold tracking-wide text-center md:text-left mb-6">
+            {"My Work".split("").map((letter, i) => (
+              <motion.span
+                key={`${letter}-${i}`}
+                custom={i}
+                variants={letterVariants}
+                initial="hidden"
+                animate={titleInView ? "visible" : "hidden"}
+                className="inline-block"
+                style={{ color: themeColors.foreground }}
+                whileHover={{
+                  y: -6,
+                  transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] },
+                }}
+              >
+                {letter === " " ? "\u00A0" : letter}
+              </motion.span>
+            ))}
+          </motion.h1>
+          <motion.p
+            className="text-xl lg:text-2xl font-light leading-relaxed max-w-3xl mx-auto md:mx-0 text-center md:text-left"
+            style={{ color: `${themeColors.foreground}80` }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={titleInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.3 }}
           >
             A showcase of my projects across different categories, each crafted
             with attention to detail and purpose
-          </p>
+          </motion.p>
         </motion.div>
 
         <div className="space-y-24">

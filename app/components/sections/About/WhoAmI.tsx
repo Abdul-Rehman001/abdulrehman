@@ -8,6 +8,7 @@ import {
   useTransform,
   useSpring,
 } from "framer-motion";
+import { Github, Linkedin, Instagram, Mail } from "lucide-react";
 
 interface ThemeColors {
   foreground: string;
@@ -180,7 +181,7 @@ export default function WhoAmISection({
   return (
     <section
       ref={sectionRef}
-      className="relative w-full min-h-screen flex flex-col justify-center px-4 lg:px-18 xl:px-12 py-16 sm:py-20 lg:py-24 overflow-hidden"
+      className="relative w-full min-h-screen flex flex-col justify-center px-6 lg:px-20 py-16 sm:py-20 lg:py-24"
       style={{ backgroundColor: themeColors.background }}
     >
       {/* Enhanced Animated Background */}
@@ -246,16 +247,14 @@ export default function WhoAmISection({
           style={{ y: titleY }}
         >
           <motion.h1
-            className={`text-[3.5rem] xs:text-[4rem] sm:text-[5rem] md:text-[6rem] lg:text-[12rem] xl:text-[12rem] 2xl:text-[12rem]
-              font-bold leading-[0.8] tracking-tight text-center lg:text-left
-              `}
+            className="text-6xl lg:text-8xl xl:text-9xl font-bold tracking-wide text-center md:text-left mb-6"
             style={{
               wordBreak: "keep-all",
               hyphens: "none",
               perspective: "1000px",
             }}
           >
-            {"About ME".split("").map((letter, i) => (
+            {"About Me".split("").map((letter, i) => (
               <motion.span
                 key={`${letter}-${i}`}
                 custom={i}
@@ -321,10 +320,10 @@ export default function WhoAmISection({
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1.2, delay: 0.5 }}
               >
-                A FRONT-END DEVELOPER FOCUS ON THE MAIN AIM — BRINGING DIGITAL
-                IDEAS TO LIFE, WHILE I'LL MAKE SURE THAT YOUR INTERFACES FEEL
-                NATURAL AND ENGAGING IN THE DIGITAL ENVIRONMENT AND STANDS OUT
-                FROM THE COMPETITORS.
+                A FULL STACK DEVELOPER FOCUSED ON THE MAIN AIM — BRINGING DIGITAL
+                IDEAS TO LIFE, WHILE I'LL MAKE SURE THAT YOUR APPLICATIONS ARE
+                SCALABLE, PERFORMANT, AND ENGAGING IN THE DIGITAL ENVIRONMENT AND
+                STAND OUT FROM THE COMPETITORS.
               </motion.span>
             </motion.p>
 
@@ -363,71 +362,65 @@ export default function WhoAmISection({
               className="text-sm sm:text-base font-medium uppercase tracking-wider"
               style={{ color: themeColors.foreground }}
               variants={fadeUpVariants}
-              whileHover={{
-                letterSpacing: "0.2em",
-                x: 5,
-                transition: { duration: 0.3, ease: smoothEase },
-              }}
             >
-              SOCIALS:
+              FIND ME ON:
             </motion.h3>
 
             <motion.div
-              className="flex flex-wrap gap-4 sm:gap-6 lg:gap-8"
+              className="flex flex-wrap items-center gap-6"
               variants={containerVariants}
             >
               {[
-                { name: "INSTAGRAM", href: "#" },
-                { name: "BEHANCE", href: "#" },
-                { name: "DRIBBBLE", href: "#" },
-                { name: "TWITTER", href: "#" },
-                { name: "LINKEDIN", href: "#" },
-              ].map((social, index) => (
+                {
+                  name: "GITHUB",
+                  href: "https://github.com/Abdul-Rehman001",
+                  icon: <Github size={18} />,
+                },
+                {
+                  name: "LINKEDIN",
+                  href: "https://www.linkedin.com/in/abdul-rehman-tahir-11298a217/",
+                  icon: <Linkedin size={18} />,
+                },
+                {
+                  name: "INSTAGRAM",
+                  href: "https://www.instagram.com/abdul.rehman_____/",
+                  icon: <Instagram size={18} />,
+                },
+                {
+                  name: "EMAIL",
+                  href: "mailto:abdulrehman7619931243@gmail.com",
+                  icon: <Mail size={18} />,
+                },
+              ].map((social) => (
                 <motion.a
                   key={social.name}
                   href={social.href}
-                  className="text-sm sm:text-base font-medium uppercase tracking-wider whitespace-nowrap relative overflow-hidden group"
+                  className="flex items-center gap-4 text-lg sm:text-xl font-medium uppercase tracking-wider group relative overflow-hidden"
                   style={{ color: themeColors.foreground }}
                   variants={socialVariants}
                   initial="initial"
                   whileHover="hover"
-                  whileTap="tap"
-                  custom={index}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <motion.span
-                    className="relative z-10 "
-                    whileHover={{
-                      letterSpacing: "0.1em",
-                      transition: { duration: 0.3, ease: smoothEase },
-                    }}
-                  >
-                    {social.name}
-                  </motion.span>
-
-                  {/* Enhanced animated underline */}
                   <motion.div
-                    className="absolute bottom-0 left-0 h-0.5 w-0 rounded-full"
+                    className="flex items-center justify-center w-8 h-8"
+                    style={{ color: themeColors.accent }}
+                  >
+                    {social.icon}
+                  </motion.div>
+                  <span className="relative z-10">{social.name}</span>
+
+                  {/* Animated underline */}
+                  <motion.div
+                    className="absolute bottom-0 left-12 h-0.5 w-0 rounded-full"
                     style={{ backgroundColor: themeColors.accent }}
                     whileHover={{
-                      width: "100%",
+                      width: "calc(100% - 3rem)",
                       transition: {
                         duration: 0.4,
                         ease: smoothEase,
-                        type: "spring",
-                        stiffness: 200,
-                        damping: 20,
                       },
-                    }}
-                  />
-
-                  {/* Subtle background highlight on hover */}
-                  <motion.div
-                    className="absolute inset-0 rounded-md opacity-0"
-                    style={{ backgroundColor: `${themeColors.accent}10` }}
-                    whileHover={{
-                      opacity: 1,
-                      scale: 1.1,
-                      transition: { duration: 0.3, ease: smoothEase },
                     }}
                   />
                 </motion.a>

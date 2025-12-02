@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Instagram, Linkedin, Twitter } from "lucide-react";
+import { Instagram, Linkedin, Github, Mail } from "lucide-react";
 import { useTheme } from "./themes/ThemeContext";
 
 export default function Navbar() {
@@ -23,8 +23,9 @@ export default function Navbar() {
     { title: "HOME", path: "/", number: "01" },
     { title: "ABOUT", path: "#about", number: "02" },
     { title: "WORK", path: "#work", number: "03" },
-    { title: "CONNECT", path: "#contact", number: "04" },
-    { title: "JOURNEY", path: "#journey", number: "05" },
+    { title: "SERVICES", path: "#services", number: "04" },
+    { title: "SKILLS", path: "#skills", number: "05" },
+    { title: "CONNECT", path: "#contact", number: "06" },
   ];
 
   // Helper function to determine text color based on theme
@@ -276,26 +277,87 @@ export default function Navbar() {
                         transition: { duration: 0.4 },
                       }}
                     >
-                      <Link href={link.path} onClick={() => setIsOpen(false)}>
-                        <div className="group relative inline-block">
-                          <div className="flex items-baseline">
-                            <span
-                              className={`${getMenuNumberColor()} text-sm mr-4 italic`}
-                            >
-                              {link.number}
-                            </span>
-                            <span
-                              className={`text-4xl md:text-6xl font-bold ${getTextColor()} relative`}
-                            >
-                              {link.title}
+                      {link.path === "/" ? (
+                        <a
+                          href={link.path}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setIsOpen(false);
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                          }}
+                        >
+                          <div className="group relative inline-block">
+                            <div className="flex items-baseline">
                               <span
-                                className="block h-0.5 w-0 group-hover:w-full transition-all duration-500 absolute bottom-0 left-0"
-                                style={{ backgroundColor: themeColors.accent }}
-                              ></span>
-                            </span>
+                                className={`${getMenuNumberColor()} text-sm mr-4 italic`}
+                              >
+                                {link.number}
+                              </span>
+                              <span
+                                className={`text-4xl md:text-6xl font-bold ${getTextColor()} relative`}
+                              >
+                                {link.title}
+                                <span
+                                  className="block h-0.5 w-0 group-hover:w-full transition-all duration-500 absolute bottom-0 left-0"
+                                  style={{ backgroundColor: themeColors.accent }}
+                                ></span>
+                              </span>
+                            </div>
                           </div>
-                        </div>
-                      </Link>
+                        </a>
+                      ) : link.path.startsWith("#") ? (
+                        <a
+                          href={link.path}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setIsOpen(false);
+                            const element = document.querySelector(link.path);
+                            if (element) {
+                              element.scrollIntoView({ behavior: "smooth", block: "start" });
+                            }
+                          }}
+                        >
+                          <div className="group relative inline-block">
+                            <div className="flex items-baseline">
+                              <span
+                                className={`${getMenuNumberColor()} text-sm mr-4 italic`}
+                              >
+                                {link.number}
+                              </span>
+                              <span
+                                className={`text-4xl md:text-6xl font-bold ${getTextColor()} relative`}
+                              >
+                                {link.title}
+                                <span
+                                  className="block h-0.5 w-0 group-hover:w-full transition-all duration-500 absolute bottom-0 left-0"
+                                  style={{ backgroundColor: themeColors.accent }}
+                                ></span>
+                              </span>
+                            </div>
+                          </div>
+                        </a>
+                      ) : (
+                        <Link href={link.path} onClick={() => setIsOpen(false)}>
+                          <div className="group relative inline-block">
+                            <div className="flex items-baseline">
+                              <span
+                                className={`${getMenuNumberColor()} text-sm mr-4 italic`}
+                              >
+                                {link.number}
+                              </span>
+                              <span
+                                className={`text-4xl md:text-6xl font-bold ${getTextColor()} relative`}
+                              >
+                                {link.title}
+                                <span
+                                  className="block h-0.5 w-0 group-hover:w-full transition-all duration-500 absolute bottom-0 left-0"
+                                  style={{ backgroundColor: themeColors.accent }}
+                                ></span>
+                              </span>
+                            </div>
+                          </div>
+                        </Link>
+                      )}
                     </motion.li>
                   ))}
                 </ul>
@@ -313,25 +375,38 @@ export default function Navbar() {
                     }}
                   >
                     <a
-                      href="#"
+                      href="https://github.com/Abdul-Rehman001"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="p-2 rounded-full hover:bg-white/20 transition-colors duration-300"
                       style={{ backgroundColor: `${themeColors.accent}30` }}
                     >
-                      <Instagram className={`h-5 w-5 ${getTextColor()}`} />
+                      <Github className={`h-5 w-5 ${getTextColor()}`} />
                     </a>
                     <a
-                      href="#"
+                      href="https://www.linkedin.com/in/abdul-rehman-tahir-11298a217/"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="p-2 rounded-full hover:bg-white/20 transition-colors duration-300"
                       style={{ backgroundColor: `${themeColors.accent}30` }}
                     >
                       <Linkedin className={`h-5 w-5 ${getTextColor()}`} />
                     </a>
                     <a
-                      href="#"
+                      href="https://www.instagram.com/abdul.rehman_____/"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="p-2 rounded-full hover:bg-white/20 transition-colors duration-300"
                       style={{ backgroundColor: `${themeColors.accent}30` }}
                     >
-                      <Twitter className={`h-5 w-5 ${getTextColor()}`} />
+                      <Instagram className={`h-5 w-5 ${getTextColor()}`} />
+                    </a>
+                    <a
+                      href="mailto:abdulrehman7619931243@gmail.com"
+                      className="p-2 rounded-full hover:bg-white/20 transition-colors duration-300"
+                      style={{ backgroundColor: `${themeColors.accent}30` }}
+                    >
+                      <Mail className={`h-5 w-5 ${getTextColor()}`} />
                     </a>
                   </motion.div>
                 </div>

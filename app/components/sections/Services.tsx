@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useTheme } from "../layout/themes/ThemeContext";
 import {
   Code2,
@@ -38,6 +38,11 @@ export default function ServicesSection() {
   const { themeColors } = useTheme();
   const [activeService, setActiveService] = useState<number>(1);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const titleRef = useRef(null);
+  const titleInView = useInView(titleRef, {
+    once: true,
+    amount: 0.3,
+  });
 
   const [currentPage, setCurrentPage] = useState(0);
 
@@ -271,24 +276,27 @@ export default function ServicesSection() {
     }
   };
 
+  // Letter animation variants for heading (matching About section style)
   const letterVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 },
-  };
-
-  const wordVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.05,
-      },
+    hidden: {
+      opacity: 0,
+      y: 40,
     },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        delay: i * 0.08,
+        ease: [0.25, 0.1, 0.25, 1],
+      },
+    }),
   };
 
   return (
     <motion.section
-      className="py-32 px-4 lg:px-20 w-full overflow-hidden relative"
+      id="services"
+      className="py-32 px-6 lg:px-20 w-full overflow-x-hidden relative"
       style={{ backgroundColor: themeColors.backgroundAlt }}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
@@ -305,52 +313,37 @@ export default function ServicesSection() {
       />
 
       <div className="max-w-full mx-auto relative z-10">
-        {/* Enhanced Header */}
+        {/* Header - Left aligned matching About section */}
         <motion.div
-          className="mb-24 text-center max-w-5xl mx-auto"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          viewport={{ once: true }}
+          ref={titleRef}
+          className="mb-24 lg:mb-20 overflow-hidden"
         >
-          <motion.h2
-            className="text-5xl lg:text-6xl font-normal mb-8 tracking-normal leading-none"
-            style={{ color: `${themeColors.foreground}90` }}
-            variants={wordVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {"Services That ".split("").map((char, index) => (
+          <motion.h1 className="text-6xl lg:text-8xl xl:text-9xl font-bold tracking-wide text-center md:text-left mb-6">
+            {"Services".split("").map((letter, i) => (
               <motion.span
-                key={index}
+                key={`${letter}-${i}`}
+                custom={i}
                 variants={letterVariants}
-                transition={{ duration: 0.5, delay: index * 0.03 }}
+                initial="hidden"
+                animate={titleInView ? "visible" : "hidden"}
+                className="inline-block"
+                style={{ color: themeColors.foreground }}
+                whileHover={{
+                  y: -6,
+                  transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] },
+                }}
               >
-                {char}
+                {letter === " " ? "\u00A0" : letter}
               </motion.span>
             ))}
-            <span
-              className={`font-semibold bg-gradient-to-r ${themeColors.textGradient} bg-clip-text text-transparent`}
-            >
-              {"Deliver".split("").map((char, index) => (
-                <motion.span
-                  key={index}
-                  variants={letterVariants}
-                  transition={{ duration: 0.5, delay: (index + 13) * 0.03 }}
-                >
-                  {char}
-                </motion.span>
-              ))}
-            </span>
-          </motion.h2>
+          </motion.h1>
 
           <motion.p
-            className="text-xl md:text-2xl font-light leading-relaxed"
-            style={{ color: `${themeColors.foreground}70` }}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            className="text-xl lg:text-2xl font-light leading-relaxed max-w-3xl mx-auto md:mx-0 text-center md:text-left"
+            style={{ color: `${themeColors.foreground}80` }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={titleInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.3 }}
           >
             Comprehensive frontend solutions designed to elevate your digital
             presence and drive meaningful business results.
@@ -719,22 +712,12 @@ export default function ServicesSection() {
           <motion.p
             className="text-xl font-light mb-12"
             style={{ color: `${themeColors.foreground}70` }}
-            variants={wordVariants}
-            initial="hidden"
-            whileInView="visible"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
           >
-            {"Ready to transform your digital presence?"
-              .split(" ")
-              .map((word, index) => (
-                <motion.span
-                  key={index}
-                  variants={letterVariants}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="inline-block mr-2"
-                >
-                  {word}
-                </motion.span>
-              ))}
+            Ready to transform your digital presence?
           </motion.p>
 
           <motion.button

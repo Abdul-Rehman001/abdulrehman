@@ -47,28 +47,28 @@ export default function JourneySection({
   // Experience data
   const experiences = [
     {
-      role: "FRONT END",
+      role: "FULL STACK",
       roleSecondary: "developer",
-      company: "ALAZKA.AI",
-      period: "DECEMBER 2024 - PRESENT",
+      company: "BUGRAID.AI",
+      period: "JULY 2024 - PRESENT",
       description:
-        "Developing the official website and customer support platform, contributing to ongoing projects aimed at improving customer experience and expanding platform functionality.",
+        "Revamped incident and RCA dashboards using React.js, TypeScript, and Next.js, reducing investigation time by ~25% through improved UI and data visibility. Developed reusable React components and integrated Redux for state management across microservices. Built backend APIs with Node.js, Express.js, and implemented Pino logger for monitoring, cutting bug resolution time by ~20%. Integrated 6+ third-party platforms (Splunk, ServiceNow, Sentry) via webhooks and REST APIs for automated telemetry data ingestion. Optimized microservices architecture with PostgreSQL database design.",
     },
     {
-      role: "FRONT END DEVELOPER",
-      roleSecondary: "intern",
+      role: "FRONTEND",
+      roleSecondary: "developer",
       company: "ALAZKA.AI",
-      period: "SEPTEMBER 2024 - DECEMBER 2024",
+      period: "SEPTEMBER 2024 - JUNE 2025",
       description:
-        "Developed the official website for Alazka.ai, showcasing the company's services and offerings. Built a customer support platform tailored to handle client interactions and support queries.",
+        "Delivered production-ready e-commerce platform with real-time updates, Redux state management, and seamless third-party API integrations. Designed and developed 5+ client websites (SaaS, e-commerce), reducing delivery timelines by ~25%. Migrated database services from MongoDB to PostgreSQL for improved performance. Deployed applications across multiple platforms: Vercel, Netlify, AWS Amplify, and Azure.",
     },
     {
       role: "REACT DEVELOPER",
       roleSecondary: "intern",
       company: "PROVEN ROBOTICS",
-      period: "JULY 2024 - SEPTEMBER 2024",
+      period: "JULY 2024 - OCTOBER 2024",
       description:
-        "Worked on the Bot Builder platform, contributing to the development of an interactive bot-building interface for clients. Collaborated with cross-functional teams to enhance product features.",
+        "Built features for Bot Builder platform, enhancing workflow automation and node-based flow connections. Collaborated with robotics engineers to improve UI/UX, increasing platform usability. Optimized frontend performance through reusable React components and code refactoring.",
     },
   ];
 
@@ -144,7 +144,7 @@ export default function JourneySection({
   return (
     <div
       ref={journeyRef}
-      className="w-full min-h-screen flex flex-col justify-center items-center py-32 px-4 lg:px-20 relative overflow-hidden"
+      className="w-full min-h-screen flex flex-col justify-center items-center py-32 px-6 lg:px-20 relative"
       style={backgroundStyle}
       id="journey"
     >
@@ -172,8 +172,8 @@ export default function JourneySection({
           className="overflow-hidden"
           style={{ y: titleY }}
         >
-          <motion.h1 className="text-6xl lg:text-8xl xl:text-9xl font-bold tracking-wide text-center mb-20">
-            {"EXPERIENCE".split("").map((letter, i) => (
+          <motion.h1 className="text-6xl lg:text-8xl xl:text-9xl font-bold tracking-wide text-center md:text-left mb-20">
+            {"Experience".split("").map((letter, i) => (
               <motion.span
                 key={`${letter}-${i}`}
                 custom={i}
@@ -317,7 +317,7 @@ export default function JourneySection({
           animate={isJourneyInView ? "visible" : "hidden"}
         >
           <motion.a
-            href="/resume.pdf"
+            href="/Resume.pdf"
             download="Abdul_Rehman_Tahir_Resume.pdf"
             className="group relative"
             whileHover={{

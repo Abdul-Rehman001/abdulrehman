@@ -9,10 +9,18 @@
   --nav-scrolled-bg: rgba(10, 10, 10, 0.8);
 }
 
+html {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);
   transition: background-color 0.5s ease, color 0.5s ease;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
 /* Global transition effects for theme changes */

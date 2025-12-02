@@ -77,7 +77,8 @@ export default function AboutInfo({
   return (
     <div
       ref={introRef}
-      className="w-full min-h-screen flex flex-col justify-center items-center py-32 px-6"
+      id="about"
+      className="w-full min-h-screen flex flex-col justify-center items-center py-32 px-6 lg:px-20"
       style={backgroundStyle}
     >
       <div ref={textContainerRef} className="space-y-16 max-w-full mx-auto">

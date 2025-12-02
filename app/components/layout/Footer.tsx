@@ -9,7 +9,7 @@ import {
   useSpring,
 } from "framer-motion";
 import { useTheme } from "../layout/themes/ThemeContext";
-import { Github, Linkedin, Twitter, Mail, ArrowUpRight } from "lucide-react";
+import { Github, Linkedin, Instagram, Mail, ArrowUpRight } from "lucide-react";
 
 export default function Footer({ usePrimaryBackground = false }) {
   const { themeColors } = useTheme();
@@ -139,22 +139,22 @@ export default function Footer({ usePrimaryBackground = false }) {
   const socialLinks = [
     {
       name: "GITHUB",
-      href: "https://github.com/yourname",
+      href: "https://github.com/Abdul-Rehman001",
       icon: <Github size={18} />,
     },
     {
       name: "LINKEDIN",
-      href: "https://linkedin.com/in/yourname",
+      href: "https://www.linkedin.com/in/abdul-rehman-tahir-11298a217/",
       icon: <Linkedin size={18} />,
     },
     {
-      name: "TWITTER",
-      href: "https://twitter.com/yourname",
-      icon: <Twitter size={18} />,
+      name: "INSTAGRAM",
+      href: "https://www.instagram.com/abdul.rehman_____/",
+      icon: <Instagram size={18} />,
     },
     {
       name: "EMAIL",
-      href: "mailto:hello@yourname.com",
+      href: "mailto:abdulrehman7619931243@gmail.com",
       icon: <Mail size={18} />,
     },
   ];
@@ -169,7 +169,8 @@ export default function Footer({ usePrimaryBackground = false }) {
   return (
     <footer
       ref={sectionRef}
-      className="relative w-full min-h-screen flex flex-col justify-center px-4 lg:px-18 xl:px-12 py-16 sm:py-20 lg:py-24 overflow-hidden"
+      id="contact"
+      className="relative w-full min-h-screen flex flex-col justify-center px-6 lg:px-20 py-16 sm:py-20 lg:py-24 overflow-hidden"
       style={backgroundStyle}
     >
       {/* Enhanced Animated Background matching your other sections */}
@@ -240,7 +241,7 @@ export default function Footer({ usePrimaryBackground = false }) {
                   marginRight: letter === " " ? "0.1em" : "0",
                   transformStyle: "preserve-3d",
                   color:
-                    i < 4 || (i >= 5 && i < 12)
+                    i < 5 || (i >= 6 && i < 12)
                       ? themeColors.foreground
                       : "transparent",
                 }}
@@ -257,7 +258,7 @@ export default function Footer({ usePrimaryBackground = false }) {
                   },
                 }}
               >
-                {i >= 5 && i < 12 ? (
+                {i >= 6 && i < 12 ? (
                   <span
                     className={`bg-gradient-to-r ${themeColors.textGradient} bg-clip-text`}
                   >
@@ -315,7 +316,7 @@ export default function Footer({ usePrimaryBackground = false }) {
             {/* Email CTA */}
             <motion.div variants={fadeUpVariants} className="space-y-4">
               <motion.a
-                href="mailto:hello@yourname.com"
+                href="mailto:abdulrehman7619931243@gmail.com"
                 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight block group"
                 style={{ color: themeColors.foreground }}
                 whileHover={{
@@ -326,7 +327,7 @@ export default function Footer({ usePrimaryBackground = false }) {
                 <span
                   className={`bg-gradient-to-r ${themeColors.textGradient} bg-clip-text text-transparent`}
                 >
-                  hello@yourname.com
+                  abdulrehman7619931243@gmail.com
                 </span>
                 <ArrowUpRight
                   size={24}

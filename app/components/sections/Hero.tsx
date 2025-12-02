@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
@@ -43,7 +42,7 @@ export default function Hero() {
 
   return (
     <motion.section
-      className="relative min-h-screen w-full px-4 lg:px-20 flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen w-full px-6 lg:px-20 flex items-center justify-center overflow-hidden"
       style={{ backgroundColor: themeColors.background }}
       initial="hidden"
       animate="visible"
@@ -106,14 +105,15 @@ export default function Hero() {
             </motion.div>
 
             <motion.p
-              className="text-2xl max-w-2xl mt-4"
+              className="text-xl md:text-2xl max-w-2xl mt-4"
               style={{ color: `${themeColors.foreground}70` }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2, duration: 0.8 }}
             >
-              A Front End Developer based in Lucknow,India. Turning ideas into
-              stunning, user-friendly websites. Let's build something amazing!
+              Full Stack Developer with 1+ year of experience building production
+              web applications using React.js, Next.js, TypeScript, and Node.js.
+              Specialized in scalable frontends and RESTful APIs.
             </motion.p>
 
             <motion.div
@@ -133,19 +133,26 @@ export default function Hero() {
         </div>
 
         <motion.div
-          className="relative -bottom-15"
+          className="relative mt-16 md:mt-20"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.8, duration: 0.8 }}
         >
-          <div className="flex flex-col items-center cursor-pointer">
-            <h2
-              className="text-xl mt-1"
-              style={{ color: `${themeColors.foreground}80` }}
-            >
-              Designer & Developer
-            </h2>
-          </div>
+          <motion.p
+            className="text-sm md:text-base lg:text-lg font-medium tracking-wide flex flex-wrap items-center justify-center gap-2 md:gap-3"
+            style={{ color: `${themeColors.foreground}80` }}
+          >
+            <span>Full Stack Developer</span>
+            <span className="opacity-50">|</span>
+            <span>React • Next.js • Node.js</span>
+            <span className="opacity-50">|</span>
+            <span>1+ Year Experience</span>
+            <span className="opacity-50">|</span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+              <span>Open to Work</span>
+            </span>
+          </motion.p>
         </motion.div>
       </div>
     </motion.section>

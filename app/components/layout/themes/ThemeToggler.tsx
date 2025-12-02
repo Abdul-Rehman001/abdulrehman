@@ -77,7 +77,7 @@ export default function ThemeToggler() {
         )}
       </AnimatePresence>
 
-      <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 bg-stone-800/50 backdrop-blur-md px-3 py-2 rounded-xl border border-white/10 flex flex-row items-center space-x-3">
+      <div className="fixed bottom-6 right-6 lg:bottom-8 lg:right-20 z-50 bg-stone-800/50 backdrop-blur-md px-3 py-2 rounded-xl border border-white/10 flex flex-row items-center space-x-3">
         {(Object.keys(themes) as ThemeType[]).map((themeName) => (
           <div key={themeName} className="relative">
             <motion.button
