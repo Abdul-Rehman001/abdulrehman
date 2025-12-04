@@ -170,7 +170,7 @@ export default function Footer({ usePrimaryBackground = false }) {
     <footer
       ref={sectionRef}
       id="contact"
-      className="relative w-full min-h-screen flex flex-col justify-center px-6 lg:px-20 py-16 sm:py-20 lg:py-24 overflow-hidden"
+      className="relative w-full min-h-screen flex flex-col justify-center px-6 lg:px-20 py-12 sm:py-16 lg:py-20 xl:py-24 overflow-hidden"
       style={backgroundStyle}
     >
       {/* Enhanced Animated Background matching your other sections */}
@@ -221,11 +221,11 @@ export default function Footer({ usePrimaryBackground = false }) {
           style={{ y: titleY }}
         >
           <motion.h1
-            className="text-[3.5rem] xs:text-[4rem] sm:text-[5rem] md:text-[6rem] lg:text-[8rem] xl:text-[10rem] 2xl:text-[12rem]
-              font-bold leading-[0.8] tracking-tight text-center lg:text-left"
+            className="text-[2.5rem] xs:text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[7rem] xl:text-[9rem] 2xl:text-[11rem]
+              font-bold leading-[0.85] sm:leading-[0.8] tracking-tight text-left break-words"
             style={{
-              wordBreak: "keep-all",
-              hyphens: "none",
+              wordBreak: "break-word",
+              hyphens: "auto",
               perspective: "1000px",
             }}
           >
@@ -276,7 +276,7 @@ export default function Footer({ usePrimaryBackground = false }) {
 
         {/* Content Grid matching your layout style */}
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-20 xl:gap-24 items-start"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 xl:gap-20 items-start w-full"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
@@ -317,7 +317,7 @@ export default function Footer({ usePrimaryBackground = false }) {
             <motion.div variants={fadeUpVariants} className="space-y-4">
               <motion.a
                 href="mailto:abdulrehman7619931243@gmail.com"
-                className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight block group"
+                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight block group break-all sm:break-words"
                 style={{ color: themeColors.foreground }}
                 whileHover={{
                   x: 10,

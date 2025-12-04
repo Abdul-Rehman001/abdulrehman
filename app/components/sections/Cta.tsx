@@ -6,7 +6,7 @@ import { ArrowUpRight, Send } from "lucide-react";
 import { useTheme } from "../layout/themes/ThemeContext";
 
 export default function CTASection({ usePrimaryBackground = false }) {
-  const { themeColors } = useTheme();
+  const { themeColors, theme } = useTheme();
   const ctaRef = useRef(null);
   const isInView = useInView(ctaRef, { once: false, amount: 0.2 });
 
@@ -138,17 +138,34 @@ export default function CTASection({ usePrimaryBackground = false }) {
               href="#contact"
               variants={buttonVariants}
               whileHover="hover"
-              className="relative overflow-hidden group px-8 py-4 rounded-full flex items-center justify-center gap-2"
-              style={{
-                backgroundColor: themeColors.accent,
-                color: themeColors.background,
-              }}
+              className={`relative overflow-hidden group px-6 py-3 rounded-lg flex items-center justify-center gap-2 font-medium text-white ${
+                theme === "default" || theme === "velvet"
+                  ? ""
+                  : `bg-gradient-to-r ${themeColors.textGradient}`
+              }`}
+              style={
+                theme === "default"
+                  ? {
+                      backgroundColor: themeColors.foreground,
+                      color: themeColors.background,
+                      textShadow: "none",
+                    }
+                  : theme === "velvet"
+                  ? {
+                      backgroundColor: themeColors.foreground,
+                      color: themeColors.background,
+                      textShadow: "none",
+                    }
+                  : {
+                      textShadow: "0 1px 2px rgba(0, 0, 0, 0.3)",
+                    }
+              }
             >
-              <span className="relative z-10 font-medium">Start a Project</span>
+              <span className="relative z-10">Start a Project</span>
               <Send size={18} className="relative z-10" />
               <span
-                className="absolute inset-0 transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100"
-                style={{ backgroundColor: `${themeColors.accent}85` }}
+                className={`absolute inset-0 transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100 rounded-lg bg-gradient-to-r ${themeColors.textGradient}`}
+                style={{ opacity: 0.85 }}
               />
             </motion.a>
 
@@ -156,10 +173,11 @@ export default function CTASection({ usePrimaryBackground = false }) {
               href="#work"
               variants={buttonVariants}
               whileHover="hover"
-              className="px-8 py-4 rounded-full flex items-center justify-center gap-2 group"
+              className="px-6 py-3 rounded-lg border-2 flex items-center justify-center gap-2 group font-medium"
               style={{
-                backgroundColor: `${themeColors.accent}15`,
+                backgroundColor: "transparent",
                 color: themeColors.accent,
+                borderColor: themeColors.accent,
               }}
             >
               <span>View My Work</span>

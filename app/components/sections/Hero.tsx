@@ -2,9 +2,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "../layout/themes/ThemeContext";
+import { Download } from "lucide-react";
 
 export default function Hero() {
-  const { themeColors } = useTheme();
+  const { themeColors, theme } = useTheme();
 
   // Text animation variants
   const textVariants = {
@@ -117,17 +118,68 @@ export default function Hero() {
             </motion.p>
 
             <motion.div
-              className="mt-8"
+              className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.4, duration: 0.8 }}
             >
-              <button
-                className={`px-6 rounded-full py-2 border-2 ${themeColors.buttonBorder} transition-all duration-300 hover:scale-105 hover:shadow-md`}
-                style={{ color: themeColors.foreground }}
+              {/* Primary Button - Get in touch */}
+              <motion.a
+                href="#contact"
+                className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2 text-white ${
+                  theme === "default" || theme === "velvet"
+                    ? ""
+                    : `bg-gradient-to-r ${themeColors.textGradient}`
+                }`}
+                style={
+                  theme === "default"
+                    ? {
+                        backgroundColor: themeColors.foreground,
+                        color: themeColors.background,
+                        textShadow: "none",
+                      }
+                    : theme === "velvet"
+                    ? {
+                        backgroundColor: themeColors.foreground,
+                        color: themeColors.background,
+                        textShadow: "none",
+                      }
+                    : {
+                        textShadow: "0 1px 2px rgba(0, 0, 0, 0.3)",
+                      }
+                }
+                whileHover={{ scale: 1.05, shadow: "0 10px 25px rgba(0,0,0,0.1)" }}
+                whileTap={{ scale: 0.98 }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  const element = document.getElementById("contact");
+                  if (element) {
+                    element.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
               >
                 Get in touch
-              </button>
+              </motion.a>
+
+              {/* Secondary Button - Download Resume */}
+              <motion.a
+                href="/Resume.pdf"
+                download="Abdul_Rehman_Tahir_Resume.pdf"
+                className="px-6 py-3 rounded-lg border font-medium transition-all duration-300 flex items-center justify-center gap-2"
+                style={{ 
+                  color: themeColors.foreground,
+                  backgroundColor: "transparent",
+                  borderColor: themeColors.foreground
+                }}
+                whileHover={{ 
+                  scale: 1.05,
+                  backgroundColor: `${themeColors.foreground}10`,
+                  shadow: "0 10px 25px rgba(0,0,0,0.1)"
+                }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Download Resume
+              </motion.a>
             </motion.div>
           </motion.div>
         </div>

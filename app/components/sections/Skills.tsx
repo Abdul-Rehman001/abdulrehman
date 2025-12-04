@@ -262,7 +262,7 @@ export default function SkillsSection() {
           style={{ y: titleY }}
         >
           <motion.h1
-            className="text-6xl lg:text-8xl xl:text-9xl font-bold tracking-wide text-center md:text-left mb-6"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl font-bold tracking-wide text-left mb-4 sm:mb-6 break-words"
             style={{ perspective: "1000px" }}
           >
             {"Skills".split("").map((letter, i) => (
@@ -288,7 +288,7 @@ export default function SkillsSection() {
           </motion.h1>
 
           <motion.p
-            className="text-xl lg:text-2xl font-light leading-relaxed max-w-3xl mx-auto md:mx-0 text-center md:text-left"
+            className="text-lg sm:text-xl lg:text-2xl font-light leading-relaxed max-w-3xl text-left"
             style={{ color: `${themeColors.foreground}80` }}
             initial={{ opacity: 0, y: 30 }}
             animate={titleInView ? { opacity: 1, y: 0 } : {}}
@@ -315,7 +315,7 @@ export default function SkillsSection() {
               {/* Category Title */}
               <motion.div className="flex items-center gap-4">
                 <motion.h2
-                  className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-wide text-center md:text-left"
+                  className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-wide text-left"
                   style={{ color: themeColors.foreground }}
                 >
                   {category.title}

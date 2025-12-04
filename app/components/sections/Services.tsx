@@ -35,7 +35,7 @@ interface Service {
 }
 
 export default function ServicesSection() {
-  const { themeColors } = useTheme();
+  const { themeColors, theme } = useTheme();
   const [activeService, setActiveService] = useState<number>(1);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const titleRef = useRef(null);
@@ -296,7 +296,7 @@ export default function ServicesSection() {
   return (
     <motion.section
       id="services"
-      className="py-32 px-6 lg:px-20 w-full overflow-x-hidden relative"
+      className="py-16 sm:py-24 lg:py-32 px-6 lg:px-20 w-full overflow-hidden relative"
       style={{ backgroundColor: themeColors.backgroundAlt }}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
@@ -312,13 +312,13 @@ export default function ServicesSection() {
         }}
       />
 
-      <div className="max-w-full mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10 w-full">
         {/* Header - Left aligned matching About section */}
         <motion.div
           ref={titleRef}
-          className="mb-24 lg:mb-20 overflow-hidden"
+          className="mb-12 sm:mb-16 lg:mb-20 overflow-hidden"
         >
-          <motion.h1 className="text-6xl lg:text-8xl xl:text-9xl font-bold tracking-wide text-center md:text-left mb-6">
+          <motion.h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl font-bold tracking-wide text-left mb-4 sm:mb-6 break-words">
             {"Services".split("").map((letter, i) => (
               <motion.span
                 key={`${letter}-${i}`}
@@ -339,7 +339,7 @@ export default function ServicesSection() {
           </motion.h1>
 
           <motion.p
-            className="text-xl lg:text-2xl font-light leading-relaxed max-w-3xl mx-auto md:mx-0 text-center md:text-left"
+            className="text-lg sm:text-xl lg:text-2xl font-light leading-relaxed max-w-3xl text-left"
             style={{ color: `${themeColors.foreground}80` }}
             initial={{ opacity: 0, y: 30 }}
             animate={titleInView ? { opacity: 1, y: 0 } : {}}
@@ -351,9 +351,9 @@ export default function ServicesSection() {
         </motion.div>
 
         {/* Main Content Layout */}
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 xl:gap-24 items-start w-full">
           {/* Services List with Left/Right Navigation */}
-          <div className="relative">
+          <div className="relative w-full min-w-0">
             {/* Navigation Controls */}
             <div className="flex justify-between items-center mb-6">
               <span
@@ -523,7 +523,7 @@ export default function ServicesSection() {
           </div>
 
           {/* Enhanced Active Service Detail */}
-          <div className="sticky top-8">
+          <div className="sticky top-8 w-full min-w-0">
             <AnimatePresence mode="wait">
               {activeService3D && (
                 <motion.div
@@ -532,7 +532,7 @@ export default function ServicesSection() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: -20, scale: 0.95 }}
                   transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className="rounded-2xl p-8 md:p-12 border backdrop-blur-sm relative overflow-hidden"
+                  className="rounded-2xl p-6 sm:p-8 md:p-12 border backdrop-blur-sm relative overflow-hidden w-full"
                   style={{
                     backgroundColor: `${themeColors.background}50`,
                     borderColor: `${themeColors.accent}30`,
@@ -703,7 +703,7 @@ export default function ServicesSection() {
 
         {/* Enhanced Call to Action */}
         <motion.div
-          className="mt-32 text-center"
+          className="mt-32 flex flex-col items-center justify-center text-center"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -721,27 +721,42 @@ export default function ServicesSection() {
           </motion.p>
 
           <motion.button
-            className="group relative px-12 py-6 rounded-xl font-light text-xl overflow-hidden border backdrop-blur-sm"
-            style={{
-              backgroundColor: "transparent",
-              borderColor: themeColors.accent,
-              color: themeColors.foreground,
-            }}
+            className={`group relative px-8 py-4 rounded-lg font-medium text-base overflow-hidden backdrop-blur-sm flex items-center justify-center gap-2 text-white mx-auto ${
+              theme === "default" || theme === "velvet"
+                ? ""
+                : `bg-gradient-to-r ${themeColors.textGradient}`
+            }`}
+            style={
+              theme === "default"
+                ? {
+                    backgroundColor: themeColors.foreground,
+                    color: themeColors.background,
+                    textShadow: "none",
+                  }
+                : theme === "velvet"
+                ? {
+                    backgroundColor: themeColors.foreground,
+                    color: themeColors.background,
+                    textShadow: "none",
+                  }
+                : {
+                    textShadow: "0 1px 2px rgba(0, 0, 0, 0.3)",
+                  }
+            }
             whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileTap={{ scale: 0.98 }}
             transition={{ type: "spring", stiffness: 400, damping: 25 }}
           >
             <motion.div
-              className="absolute inset-0 rounded-xl"
-              style={{ backgroundColor: themeColors.accent }}
+              className={`absolute inset-0 rounded-lg bg-gradient-to-r ${themeColors.textGradient}`}
               initial={{ scale: 0, opacity: 0 }}
               whileHover={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.4 }}
             />
-            <span className="relative flex items-center gap-3 group-hover:text-white transition-colors duration-400">
+            <span className="relative flex items-center gap-2 group-hover:text-white transition-colors duration-400">
               Let's Start Your Project
               <ArrowRight
-                size={20}
+                size={18}
                 className="group-hover:translate-x-2 transition-transform duration-300"
               />
             </span>

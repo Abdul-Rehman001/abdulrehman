@@ -247,10 +247,10 @@ export default function WhoAmISection({
           style={{ y: titleY }}
         >
           <motion.h1
-            className="text-6xl lg:text-8xl xl:text-9xl font-bold tracking-wide text-center md:text-left mb-6"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl font-bold tracking-wide text-left mb-6 break-words"
             style={{
-              wordBreak: "keep-all",
-              hyphens: "none",
+              wordBreak: "break-word",
+              hyphens: "auto",
               perspective: "1000px",
             }}
           >

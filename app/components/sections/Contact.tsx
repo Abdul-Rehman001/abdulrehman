@@ -5,7 +5,7 @@ import { useTheme } from "../layout/themes/ThemeContext";
 import { Mail, Phone, MessageCircle, Send, ArrowRight } from "lucide-react";
 
 export default function ContactSection() {
-  const { themeColors } = useTheme();
+  const { themeColors, theme } = useTheme();
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const [formData, setFormData] = useState({
@@ -126,7 +126,7 @@ export default function ContactSection() {
     <section
       ref={sectionRef}
       id="contact"
-      className="relative w-full min-h-screen flex flex-col justify-center px-6 lg:px-20 py-16 sm:py-20 lg:py-24"
+      className="relative w-full min-h-screen flex flex-col justify-center px-6 lg:px-20 py-16 sm:py-20 lg:py-24 overflow-hidden"
       style={{ backgroundColor: themeColors.background }}
     >
       <div className="max-w-7xl mx-auto w-full">
@@ -135,7 +135,7 @@ export default function ContactSection() {
           ref={titleRef}
           className="mb-12 sm:mb-16 lg:mb-20 overflow-hidden"
         >
-          <motion.h1 className="text-6xl lg:text-8xl xl:text-9xl font-bold tracking-wide text-center md:text-left mb-4">
+          <motion.h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl font-bold tracking-wide text-left mb-4 break-words">
             {"Get in touch".split("").map((letter, i) => (
               <motion.span
                 key={`${letter}-${i}`}
@@ -156,7 +156,7 @@ export default function ContactSection() {
           </motion.h1>
 
           <motion.p
-            className="text-lg sm:text-xl lg:text-2xl font-light leading-relaxed max-w-3xl mx-auto md:mx-0 text-center md:text-left"
+            className="text-lg sm:text-xl lg:text-2xl font-light leading-relaxed max-w-3xl text-left"
             style={{ color: `${themeColors.foreground}80` }}
             initial={{ opacity: 0, y: 30 }}
             animate={titleInView ? { opacity: 1, y: 0 } : {}}
@@ -168,7 +168,7 @@ export default function ContactSection() {
 
         {/* Main Content - Two Column Layout */}
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 xl:gap-16 w-full"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
@@ -176,7 +176,7 @@ export default function ContactSection() {
           {/* Left Column - Say Hello! */}
           <motion.div variants={itemVariants} className="space-y-6">
             <motion.h2
-              className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-wide"
+              className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-wide text-left"
               style={{ color: themeColors.foreground }}
             >
               Say Hello!
@@ -253,7 +253,7 @@ export default function ContactSection() {
           {/* Right Column - Connect with me Form */}
           <motion.div variants={itemVariants} className="space-y-6">
             <motion.h2
-              className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-wide"
+              className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-wide text-left"
               style={{ color: themeColors.foreground }}
             >
               Connect with me
@@ -369,11 +369,28 @@ export default function ContactSection() {
               <motion.button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full flex items-center justify-center gap-2 px-6 py-4 rounded-lg font-medium transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                style={{
-                  backgroundColor: themeColors.foreground,
-                  color: themeColors.background,
-                }}
+                className={`w-full flex items-center justify-center gap-2 px-6 py-4 rounded-lg font-medium transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-white ${
+                  theme === "default" || theme === "velvet"
+                    ? ""
+                    : `bg-gradient-to-r ${themeColors.textGradient}`
+                }`}
+                style={
+                  theme === "default"
+                    ? {
+                        backgroundColor: themeColors.foreground,
+                        color: themeColors.background,
+                        textShadow: "none",
+                      }
+                    : theme === "velvet"
+                    ? {
+                        backgroundColor: themeColors.foreground,
+                        color: themeColors.background,
+                        textShadow: "none",
+                      }
+                    : {
+                        textShadow: "0 1px 2px rgba(0, 0, 0, 0.3)",
+                      }
+                }
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
