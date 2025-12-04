@@ -440,7 +440,7 @@ export default function JourneySection({
             href="/Resume.pdf"
             download="Abdul_Rehman_Tahir_Resume.pdf"
             className="group relative"
-            onClick={(e) => {
+            onClick={() => {
               setIsDownloading(true);
               setShowToast(true);
               

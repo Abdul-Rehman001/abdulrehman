@@ -2,10 +2,9 @@
 import React, { useState, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useTheme } from "../layout/themes/ThemeContext";
-import { X, ExternalLink, Github } from "lucide-react";
-import Image from "next/image";
+import { X, ExternalLink} from "lucide-react";
+
 import {
-  projectSummaries,
   getProjectDetails,
   getCategories,
   getProjectsByCategory,
@@ -14,7 +13,7 @@ import {
 } from "../../data/workData";
 
 export default function WorkSection() {
-  const { themeColors, theme } = useTheme();
+  const { themeColors } = useTheme();
   const titleRef = useRef(null);
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);

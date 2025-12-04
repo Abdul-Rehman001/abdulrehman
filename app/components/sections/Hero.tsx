@@ -2,7 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "../layout/themes/ThemeContext";
-import { Download } from "lucide-react";
+
 
 export default function Hero() {
   const { themeColors, theme } = useTheme();
@@ -148,7 +148,7 @@ export default function Hero() {
                         textShadow: "0 1px 2px rgba(0, 0, 0, 0.3)",
                       }
                 }
-                whileHover={{ scale: 1.05, shadow: "0 10px 25px rgba(0,0,0,0.1)" }}
+                whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(0,0,0,0.1)" }}
                 whileTap={{ scale: 0.98 }}
                 onClick={(e) => {
                   e.preventDefault();
@@ -174,7 +174,7 @@ export default function Hero() {
                 whileHover={{ 
                   scale: 1.05,
                   backgroundColor: `${themeColors.foreground}10`,
-                  shadow: "0 10px 25px rgba(0,0,0,0.1)"
+                  boxShadow: "0 10px 25px rgba(0,0,0,0.1)"
                 }}
                 whileTap={{ scale: 0.98 }}
               >
