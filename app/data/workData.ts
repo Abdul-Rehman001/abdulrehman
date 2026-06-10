@@ -5,6 +5,8 @@ export interface ProjectSummary {
   technologies: string[];
   image: string;
   category: string;
+  demoLink?: string;
+  githubLink?: string;
 }
 
 export interface ProjectDetails {
@@ -19,17 +21,22 @@ export interface ProjectDetails {
   impactResults: string[];
   technologiesUsed: string;
   myRole: string;
+  images?: string[];
+  demoLink?: string;
+  githubLink?: string;
 }
 
 export const projectSummaries: ProjectSummary[] = [
   {
     id: 1,
-    title: "Bloomi5 Store Builder",
+    title: "ApplyIQ",
     shortDescription:
-      "No-code website builder for creating e-commerce and service websites with drag-and-drop interface. Features 10+ pre-built templates and dynamic schema generation, reducing build time by 40%.",
-    technologies: ["Next.js", "React.js", "TypeScript", "MongoDB", "Tailwind CSS"],
-    image: "/placeholder-project-1.jpg",
+      "An intelligent, AI-powered job application tracking platform that helps users organize their job search, score resume matches, and prepare for interviews using advanced AI coaching.",
+    technologies: ["Next.js", "React", "Tailwind CSS", "TypeScript", "MongoDB", "NextAuth", "Groq API", "Framer Motion"],
+    image: "/assets/apply-1.png",
     category: "Platforms",
+    demoLink: "https://apply-iq-virid.vercel.app/",
+    githubLink: "https://github.com/Abdul-Rehman001/apply-iq",
   },
   {
     id: 2,
@@ -37,17 +44,21 @@ export const projectSummaries: ProjectSummary[] = [
     shortDescription:
       "Platform for discovering, sharing, and managing AI prompts with real-time chat, advanced search, and user authentication. Optimized MongoDB queries improved search performance by 35%.",
     technologies: ["Next.js", "MongoDB", "Node.js", "Tailwind CSS"],
-    image: "/placeholder-project-2.jpg",
+    image: "/assets/work5.jpg",
     category: "Platforms",
+    demoLink: "https://prompter-orpin.vercel.app/",
+    githubLink: "https://github.com/Abdul-Rehman001/prompter",
   },
   {
     id: 3,
-    title: "Healing Clay - E-Commerce Store",
+    title: "Reviso",
     shortDescription:
-      "Fully responsive e-commerce application with cart management, checkout flow, and payment gateway integration. Optimized performance improved page load speed by 30%.",
-    technologies: ["React.js", "Tailwind CSS", "REST APIs", "Stripe"],
-    image: "/placeholder-project-3.jpg",
-    category: "E-commerce",
+      "A high-performance, full-stack study analytics platform that helps users track their learning hours, maintain streaks, and visualize their progress over time.",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "MongoDB", "TanStack Query"],
+    image: "/assets/reviso-3.png",
+    category: "Management Systems",
+    demoLink: "https://reviso-seven.vercel.app/",
+    githubLink: "https://github.com/Abdul-Rehman001/reviso",
   },
   {
     id: 4,
@@ -55,8 +66,10 @@ export const projectSummaries: ProjectSummary[] = [
     shortDescription:
       "Administrative hotel management system for managing bookings, cabins, and guests. Features real-time dashboard, check-in/check-out flow, and comprehensive reporting.",
     technologies: ["React.js", "Supabase", "React Query", "Styled Components"],
-    image: "/placeholder-project-4.jpg",
+    image: "/assets/work1.jpg",
     category: "Management Systems",
+    demoLink: "https://the-wild-oasis-khaki.vercel.app",
+    githubLink: "https://github.com/Abdul-Rehman001/the-wild-oasis",
   },
   {
     id: 5,
@@ -64,8 +77,10 @@ export const projectSummaries: ProjectSummary[] = [
     shortDescription:
       "Pizza ordering application with real-time geolocation, cart management, and order tracking. Features intuitive menu browsing and seamless checkout experience.",
     technologies: ["React.js", "Tailwind CSS", "Redux", "Geolocation API"],
-    image: "/placeholder-project-5.jpg",
+    image: "/assets/work2.jpg",
     category: "Food & Delivery",
+    demoLink: "https://abdul-rehman001.github.io/react-pizza/",
+    githubLink: "https://github.com/Abdul-Rehman001/react-pizza",
   },
   {
     id: 6,
@@ -73,8 +88,10 @@ export const projectSummaries: ProjectSummary[] = [
     shortDescription:
       "Movie browsing and rating website with API integration. Features search functionality, detailed movie information, and personal watchlist management.",
     technologies: ["React.js", "TMDB API", "CSS3"],
-    image: "/placeholder-project-6.jpg",
+    image: "/assets/work3.jpg",
     category: "Entertainment",
+    demoLink: "https://abdul-rehman001.github.io/movies-react/",
+    githubLink: "https://github.com/Abdul-Rehman001/movies-react",
   },
   {
     id: 7,
@@ -82,56 +99,57 @@ export const projectSummaries: ProjectSummary[] = [
     shortDescription:
       "React Native mobile application providing Islamic utilities including prayer times, Qibla direction, and religious content. Cross-platform app for iOS and Android.",
     technologies: ["React Native", "JavaScript", "Geolocation API", "Islamic APIs"],
-    image: "/placeholder-project-7.jpg",
+    image: "/assets/deen-call.png",
     category: "Mobile Apps",
+    demoLink: "https://play.google.com/store/apps/details?id=com.deencall&hl=en_IN&pli=1",
   },
 ];
 
 export const projectDetails: ProjectDetails[] = [
   {
     id: 1,
-    title: "BLOOMI5 STORE BUILDER",
+    title: "APPLYIQ - AI-POWERED JOB TRACKER",
     overview:
-      "Bloomi5 is a comprehensive no-code platform that empowers users to create fully functional e-commerce and service websites without writing a single line of code. The platform combines an intuitive drag-and-drop interface with powerful backend automation to deliver professional websites in minutes.",
+      "ApplyIQ is a comprehensive job search management platform designed to streamline the chaotic process of applying for jobs. It acts as a personal career copilot, replacing messy spreadsheets with an intuitive, visually stunning dashboard. By integrating advanced AI capabilities, ApplyIQ doesn't just track applications; it actively helps candidates improve their chances of landing interviews and offers.",
     problem:
-      "Small businesses and entrepreneurs often struggle with the technical complexity and high costs of building custom websites. Traditional website builders lack flexibility, while custom development is expensive and time-consuming.",
+      "Job seekers often struggle to keep track of numerous applications across various platforms, leading to missed follow-ups, lost opportunities, and general burnout. Furthermore, tailoring resumes for specific job descriptions and preparing for unique interviews is time-consuming and difficult without expert guidance.",
     solution:
-      "Bloomi5 bridges this gap by providing a visual builder that generates dynamic database schemas and deploys production-ready websites instantly. Users can choose from pre-built templates or create custom designs, with all backend infrastructure handled automatically.",
+      "ApplyIQ centralizes the entire job search pipeline into a sleek, manageable interface. It leverages a Groq-powered AI engine to instantly analyze job descriptions against the user's resume, providing a match score, identifying missing keywords, and generating personalized interview questions and strategies. This transforms a passive tracking system into a proactive career assistant.",
     whatIBuilt: [
-      "Drag-and-drop interface using React.js and Tailwind CSS for seamless component placement and customization",
-      "Dynamic database schema generation system that automatically creates MongoDB collections based on user requirements",
-      "10+ pre-built, fully customizable templates for various business types (e-commerce, services, portfolios)",
-      "Real-time preview system allowing users to see changes instantly before publishing",
-      "One-click deployment integration with Vercel for automatic website hosting",
-      "Component library with 20+ reusable elements (headers, footers, product cards, contact forms)",
-      "Responsive design system ensuring all websites work perfectly on mobile, tablet, and desktop",
+      "A robust, responsive Next.js frontend featuring a sleek, dark-mode-first aesthetic with glassmorphism and smooth Framer Motion animations.",
+      "A secure authentication system using NextAuth with role-based access control (User vs. Admin dashboards).",
+      "A sophisticated, drag-and-drop enabled Kanban board for visualizing the application pipeline (Saved, Applied, Interview, Offer, Rejected).",
+      "An AI integration engine connecting to the Groq API (Llama 3) to analyze resumes against job descriptions in real-time.",
+      "A comprehensive analytics dashboard that calculates conversion rates, time-to-interview metrics, and application velocity over time.",
+      "A dedicated admin portal for platform-wide tracking of user engagement and system usage.",
+      "A dynamic, visually engaging landing page optimized for conversion.",
     ],
     keyFeatures: [
-      "Visual drag-and-drop editor with intuitive controls",
-      "Pre-built templates for quick setup",
-      "Custom styling options (colors, fonts, spacing)",
-      "Dynamic form builder for contact and order forms",
-      "Image upload and management system",
-      "SEO optimization tools built-in",
-      "Mobile-responsive by default",
+      "Smart Pipeline Management: Track applications across custom stages with a dynamic, visual dashboard.",
+      "AI Resume Analyzer: Instantly compare your uploaded resume against any job description for a compatibility score and actionable feedback.",
+      "Interview Prep Coach: Generate tailored interview questions, model answers, and success strategies based on specific job requirements.",
+      "Comprehensive Analytics: Visualize application funnels, response rates, and daily application streaks.",
+      "Secure Document Storage: Upload and manage resumes securely using Cloudinary integration.",
     ],
     technicalHighlights: [
-      "Implemented complex state management for handling nested components and user interactions",
-      "Built custom hooks for drag-and-drop functionality with collision detection",
-      "Designed flexible schema generation algorithm supporting various data types",
-      "Integrated real-time collaboration features for team editing",
-      "Optimized performance for smooth editing experience even with 50+ components",
+      "Implemented a serverless architecture using Next.js App Router and MongoDB for highly scalable and responsive data handling.",
+      "Engineered a custom, dynamic AI prompt system within lib/grok.ts that enforces strict JSON formatting from the LLM for reliable frontend rendering.",
+      "Developed complex MongoDB aggregation pipelines to generate real-time analytics for both user and admin dashboards.",
+      "Built a highly reusable and performant component library utilizing Tailwind CSS and customized UI variants.",
+      "Optimized application performance through aggressive server-side rendering and strategic client-side state management.",
     ],
     impactResults: [
-      "Reduced website build time by 40% compared to traditional development methods",
-      "Successfully deployed 15+ client websites across different industries",
-      "Average user can build a complete website in under 2 hours",
-      "Zero coding knowledge required from end users",
+      "Delivered a fully functional, production-ready application that significantly reduces the time required to manage job applications.",
+      "Created a highly engaging user experience that encourages daily interaction through streak tracking and visual progress indicators.",
+      "Established a scalable architecture capable of supporting future feature expansions, such as automated cover letter generation and email integrations.",
     ],
     technologiesUsed:
-      "Next.js, React.js, TypeScript, MongoDB, Tailwind CSS, Vercel, React DnD, Zustand, REST APIs",
+      "Next.js, React, TypeScript, Tailwind CSS, MongoDB, Mongoose, NextAuth, Groq API (Llama 3), Cloudinary, Framer Motion, Lucide React",
     myRole:
-      "Full Stack Developer - Designed and developed the entire platform from concept to deployment, including frontend interface, backend APIs, and database architecture.",
+      "Full Stack Developer - Designed and built the entire application from the ground up, including the frontend UI, backend API routes, database schema, and AI integration.",
+    images: ["/assets/apply-1.png", "/assets/apply-2.png", "/assets/apply-3.png"],
+    demoLink: "https://apply-iq-virid.vercel.app/",
+    githubLink: "https://github.com/Abdul-Rehman001/apply-iq",
   },
   {
     id: 2,
@@ -179,55 +197,51 @@ export const projectDetails: ProjectDetails[] = [
       "Next.js, React.js, MongoDB, Node.js, Express.js, NextAuth.js, Socket.io, Tailwind CSS, REST APIs",
     myRole:
       "Full Stack Developer - Built entire application including frontend UI, backend APIs, real-time chat system, and database architecture.",
+    demoLink: "https://prompter-orpin.vercel.app/",
+    githubLink: "https://github.com/Abdul-Rehman001/prompter",
   },
   {
     id: 3,
-    title: "HEALING CLAY - E-COMMERCE STORE",
+    title: "REVISO - STUDY ANALYTICS PLATFORM",
     overview:
-      "Healing Clay is a modern e-commerce platform specializing in natural clay-based skincare products. The store provides a seamless shopping experience with intuitive navigation, secure checkout, and real-time inventory management.",
+      "Reviso is a production-grade study tracking application designed to help students and self-learners manage their study sessions, track detailed notes, and visualize their long-term progress. Evolving from a simple CRUD concept into a robust, SaaS-like platform, Reviso focuses on speed, reliability, and a premium user experience through advanced data aggregations and seamless, optimistic UI updates.",
     problem:
-      "The client needed a fast, mobile-friendly e-commerce solution that could handle high traffic during promotional periods while providing excellent user experience and secure payment processing.",
+      "Many self-directed learners struggle to maintain consistency and lack visibility into where their study time is actually being spent. Existing tools are often either too rudimentary (basic stopwatches) or overly complex (enterprise project management suites), leaving a gap for a dedicated, analytics-driven study tracker that motivates without causing friction.",
     solution:
-      "Built a lightweight, performant React application with optimized images, lazy loading, and efficient state management. Integrated Stripe for secure payments and implemented robust cart management logic.",
+      "Reviso provides a streamlined, distraction-free interface to log study hours, categorize them by subject, and record session-specific topics and notes. It leverages advanced backend aggregations to instantly generate insightful dashboards, activity heatmaps, and progress charts, giving users immediate feedback on their efforts and keeping them motivated.",
     whatIBuilt: [
-      "Complete product catalog with filtering by category, price range, and product attributes",
-      "Shopping cart system with add/remove items, quantity updates, and price calculations",
-      "Multi-step checkout process with form validation and error handling",
-      "Stripe payment gateway integration for secure credit card processing",
-      "User account system with order history and saved addresses",
-      "Product detail pages with image galleries and customer reviews",
-      "Mobile-first responsive design ensuring perfect display on all devices",
-      "Admin dashboard for inventory management and order processing",
+      "Architected and developed a fully responsive, animated user interface using React, Tailwind CSS, and Framer Motion.",
+      "Engineered a robust RESTful API utilizing Next.js Route Handlers and MongoDB.",
+      "Implemented a custom Next.js middleware layer for secure route protection and sliding-window API rate limiting.",
+      "Designed a comprehensive analytics dashboard featuring heatmaps, bar charts, and pie charts using Recharts.",
+      "Developed an optimistic UI layer using TanStack Query (React Query) to eliminate loading spinners and provide instant feedback during data mutations.",
+      "Configured a complete CI/CD pipeline with automated End-to-End (E2E) testing via Playwright and GitHub Actions.",
     ],
     keyFeatures: [
-      "Browse 50+ natural clay products with detailed descriptions",
-      "Smart search with autocomplete suggestions",
-      "Filter and sort products by multiple criteria",
-      "Persistent cart that saves items across sessions",
-      "Guest checkout and registered user options",
-      "Order tracking and email confirmations",
-      "Wishlist functionality for saving products",
-      "Related product recommendations",
+      "Subject Management: Create custom subjects with dedicated color themes, emojis, and weekly hour targets.",
+      "Frictionless Logging: Quickly log study hours with support for granular sub-topics and session notes.",
+      "Advanced Analytics: Interactive dashboards displaying daily/weekly/monthly hours, current streaks, and subject breakdowns.",
+      "Activity Heatmap: A GitHub-style contribution graph to visualize study consistency and daily effort over time.",
+      "History & Export: Searchable, filterable historical logs with CSV export functionality.",
     ],
     technicalHighlights: [
-      "Implemented code splitting and lazy loading, reducing initial bundle size by 40%",
-      "Optimized images using next-gen formats (WebP) with fallbacks",
-      "Built custom shopping cart hook with localStorage persistence",
-      "Designed efficient state management using Context API",
-      "Integrated Stripe Elements for PCI-compliant payment forms",
-      "Implemented debounced search for better performance",
-      "Added skeleton loaders for improved perceived performance",
+      "Database Optimization: Replaced memory-intensive client-side array filtering with highly efficient MongoDB Aggregation Pipelines ($facet), significantly reducing server memory usage and processing time.",
+      "ACID Transactions: Implemented Mongoose sessions to ensure atomic cascading deletes (e.g., safely deleting a subject removes all associated logs and topics without creating orphaned data).",
+      "Caching & Server State Management: Integrated TanStack Query for background revalidation, query invalidation, and cache management, resulting in a near-instantaneous 'Single Page App' feel.",
+      "API Resilience: Developed a custom rate limiter within the Next.js edge middleware to protect backend endpoints from abuse and bot traffic.",
     ],
     impactResults: [
-      "Page load speed improved by 30% through optimization techniques",
-      "Mobile conversion rate increased by 25% after responsive redesign",
-      "Cart abandonment reduced by 15% with persistent cart feature",
-      "Successfully processed 500+ orders in first three months",
+      "Achieved a highly responsive, zero-latency feel for critical user actions (like saving logs) via Optimistic UI updates.",
+      "Ensured 100% data integrity during complex multi-document deletions, preventing database corruption.",
+      "Established a highly reliable deployment workflow safeguarded by automated, browser-based UI tests.",
     ],
     technologiesUsed:
-      "React.js, JavaScript, Tailwind CSS, Stripe API, REST APIs, Context API, React Router, Axios",
+      "Next.js, React, TypeScript, Tailwind CSS, Framer Motion, MongoDB, Mongoose, TanStack Query (React Query), Recharts, NextAuth.js, Playwright, GitHub Actions",
     myRole:
-      "Frontend Developer - Designed and implemented entire frontend application, integrated payment gateway, and optimized performance.",
+      "Full Stack Developer - Architected and built the entire application from the ground up, handling UI/UX design, frontend engineering, database modeling, API development, and CI/CD automation.",
+    images: ["/assets/reviso-1.png", "/assets/reviso-2.png", "/assets/reviso-3.png"],
+    demoLink: "https://reviso-seven.vercel.app/",
+    githubLink: "https://github.com/Abdul-Rehman001/reviso",
   },
   {
     id: 4,
@@ -277,6 +291,8 @@ export const projectDetails: ProjectDetails[] = [
       "React.js, JavaScript, Supabase, React Query, React Hook Form, React Router, Recharts, Styled Components, Date-fns",
     myRole:
       "Full Stack Developer - Developed complete application including UI design, backend integration, and database schema design on Supabase.",
+    demoLink: "https://the-wild-oasis-khaki.vercel.app",
+    githubLink: "https://github.com/Abdul-Rehman001/the-wild-oasis",
   },
   {
     id: 5,
@@ -326,6 +342,8 @@ export const projectDetails: ProjectDetails[] = [
       "React.js, JavaScript, Redux Toolkit, Tailwind CSS, React Router, Geolocation API, LocalStorage",
     myRole:
       "Frontend Developer - Built complete application including UI, state management, and geolocation integration.",
+    demoLink: "https://abdul-rehman001.github.io/react-pizza/",
+    githubLink: "https://github.com/Abdul-Rehman001/react-pizza",
   },
   {
     id: 6,
@@ -375,6 +393,8 @@ export const projectDetails: ProjectDetails[] = [
       "React.js, JavaScript, TMDB API, CSS3, React Router, Axios, LocalStorage",
     myRole:
       "Frontend Developer - Built entire application including API integration, UI design, and user interaction features.",
+    demoLink: "https://abdul-rehman001.github.io/movies-react/",
+    githubLink: "https://github.com/Abdul-Rehman001/movies-react",
   },
   {
     id: 7,
@@ -425,6 +445,8 @@ export const projectDetails: ProjectDetails[] = [
       "React Native, JavaScript, Expo, AsyncStorage, React Navigation, Push Notifications, Geolocation API, Device Sensors",
     myRole:
       "Mobile App Developer - Developed complete mobile application as freelance project including UI design, feature implementation, and deployment to app stores.",
+    images: ["/assets/deen-call.png"],
+    demoLink: "https://play.google.com/store/apps/details?id=com.deencall&hl=en_IN&pli=1",
   },
 ];
 

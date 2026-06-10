@@ -2,7 +2,8 @@
 import React, { useState, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useTheme } from "../layout/themes/ThemeContext";
-import { X, ExternalLink} from "lucide-react";
+import { X, ExternalLink, Github } from "lucide-react";
+import Image from "next/image";
 
 import {
   getProjectDetails,
@@ -284,16 +285,25 @@ function ProjectCard({
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-          <span
-            className="text-4xl font-bold opacity-20"
-            style={{ color: themeColors.foreground }}
-          >
-            {project.title}
-          </span>
+        <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center overflow-hidden">
+          {project.image && !project.image.includes('placeholder') ? (
+            <Image 
+              src={project.image} 
+              alt={project.title} 
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+          ) : (
+            <span
+              className="text-4xl font-bold opacity-20 text-center px-4"
+              style={{ color: themeColors.foreground }}
+            >
+              {project.title}
+            </span>
+          )}
         </div>
-        {/* Placeholder - will be replaced with actual image */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent pointer-events-none" />
       </motion.div>
 
       {/* Content Section */}
@@ -349,15 +359,58 @@ function ProjectCard({
           ))}
         </div>
 
-        <motion.div
-          className="flex items-center gap-2 text-sm font-medium"
-          style={{ color: themeColors.accent }}
-          whileHover={{ x: 5 }}
-          transition={{ type: "spring", stiffness: 400, damping: 25 }}
-        >
-          <span>View Details</span>
-          <ExternalLink size={16} />
-        </motion.div>
+        <div className="flex flex-wrap items-center gap-6 mt-2">
+          <motion.div
+            className="flex items-center gap-2 text-sm font-medium"
+            style={{ color: themeColors.accent }}
+            whileHover={{ x: 5 }}
+            transition={{ type: "spring", stiffness: 400, damping: 25 }}
+          >
+            <span>View Details</span>
+            <ExternalLink size={16} />
+          </motion.div>
+
+          <div className="flex items-center gap-3">
+            {project.demoLink && (
+              <a 
+                href={project.demoLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full transition-colors"
+                style={{ 
+                  color: themeColors.foreground, 
+                  border: `1px solid ${themeColors.foreground}30`,
+                  backgroundColor: `${themeColors.background}80` 
+                }}
+                onMouseOver={(e) => (e.currentTarget.style.backgroundColor = `${themeColors.foreground}15`)}
+                onMouseOut={(e) => (e.currentTarget.style.backgroundColor = `${themeColors.background}80`)}
+              >
+                <span>Live</span>
+                <ExternalLink size={14} />
+              </a>
+            )}
+            {project.githubLink && (
+              <a 
+                href={project.githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full transition-colors"
+                style={{ 
+                  color: themeColors.foreground, 
+                  border: `1px solid ${themeColors.foreground}30`,
+                  backgroundColor: `${themeColors.background}80`
+                }}
+                onMouseOver={(e) => (e.currentTarget.style.backgroundColor = `${themeColors.foreground}15`)}
+                onMouseOut={(e) => (e.currentTarget.style.backgroundColor = `${themeColors.background}80`)}
+              >
+                <span>Code</span>
+                <Github size={14} />
+              </a>
+            )}
+          </div>
+        </div>
       </motion.div>
     </motion.div>
   );
@@ -525,13 +578,64 @@ function ProjectModal({
               exit="exit"
             >
               <div className="max-w-7xl mx-auto">
-                {/* Project Title */}
-                <motion.h1
-                  className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8"
-                  style={{ color: themeColors.foreground }}
-                >
-                  {projectDetails.title}
-                </motion.h1>
+                {/* Project Title and Links */}
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-8">
+                  <motion.h1
+                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold"
+                    style={{ color: themeColors.foreground }}
+                  >
+                    {projectDetails.title}
+                  </motion.h1>
+
+                  <motion.div className="flex flex-wrap gap-4">
+                    {projectDetails.demoLink && (
+                      <a 
+                        href={projectDetails.demoLink} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-transform hover:scale-105"
+                        style={{ backgroundColor: themeColors.accent, color: themeColors.background }}
+                      >
+                        <span>Live Demo</span>
+                        <ExternalLink size={18} />
+                      </a>
+                    )}
+                    {projectDetails.githubLink && (
+                      <a 
+                        href={projectDetails.githubLink} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-transform hover:scale-105 border"
+                        style={{ borderColor: themeColors.accent, color: themeColors.accent }}
+                      >
+                        <span>Source Code</span>
+                        <Github size={18} />
+                      </a>
+                    )}
+                  </motion.div>
+                </div>
+
+                {/* Image Gallery */}
+                {projectDetails.images && projectDetails.images.length > 0 && (
+                  <motion.div className="mb-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {projectDetails.images.map((img, idx) => (
+                      <motion.div 
+                        key={idx}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.6 + idx * 0.1 }}
+                        className="rounded-xl overflow-hidden aspect-[4/3] lg:aspect-video relative shadow-lg"
+                      >
+                        <Image 
+                          src={img} 
+                          alt={`${projectDetails.title} screenshot ${idx + 1}`}
+                          fill
+                          className="object-cover hover:scale-105 transition-transform duration-500"
+                        />
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                )}
 
                 {/* Overview */}
                 <motion.div className="mb-12">

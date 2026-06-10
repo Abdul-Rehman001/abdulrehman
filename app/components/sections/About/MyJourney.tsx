@@ -54,7 +54,7 @@ export default function JourneySection({
       role: "FULL STACK",
       roleSecondary: "developer",
       company: "BUGRAID.AI",
-      period: "JULY 2024 - PRESENT",
+      period: "JULY 2025 - PRESENT",
       description: [
         "Worked on Developing and Enhancing existing Incident Response platform.",
         "Revamped incident and RCA dashboards using React.js, TypeScript, and Next.js, reducing investigation time by ~25% through improved UI and data visibility.",
@@ -70,7 +70,7 @@ export default function JourneySection({
       role: "FULL STACK",
       roleSecondary: "developer",
       company: "FREELANCE",
-      period: "JUNE 2024 - JULY 2024 | REMOTE",
+      period: "JUNE 2025 - JULY 2025 | REMOTE",
       companySubtitle: "RetconSoft & Independent Clients",
       description: [
         "Developed complete React Native mobile application \"Deen Call\" - an Islamic utility app with prayer times, Qibla direction, and Islamic content features.",

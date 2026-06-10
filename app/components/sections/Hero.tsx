@@ -43,7 +43,7 @@ export default function Hero() {
 
   return (
     <motion.section
-      className="relative min-h-screen w-full px-6 lg:px-20 flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen w-full px-6 lg:px-20 pt-28 md:pt-0 flex items-center justify-center overflow-hidden"
       style={{ backgroundColor: themeColors.background }}
       initial="hidden"
       animate="visible"
@@ -85,10 +85,10 @@ export default function Hero() {
                 style={{ color: `${themeColors.foreground}70` }}
                 variants={textVariants}
               >
-                {["I", "m", "Abdul"].map((word, i) => (
+                {["I'm", "Abdul"].map((word, i) => (
                   <motion.span
                     key={i}
-                    className="inline-block mr-3"
+                    className="inline-block mr-3 md:mr-4"
                     custom={i}
                     variants={wordVariants}
                   >
@@ -97,7 +97,7 @@ export default function Hero() {
                 ))}
                 <motion.span
                   className={`inline-block bg-gradient-to-b ${themeColors.textGradient} bg-clip-text text-transparent`}
-                  custom={3}
+                  custom={2}
                   variants={wordVariants}
                 >
                   Rehman

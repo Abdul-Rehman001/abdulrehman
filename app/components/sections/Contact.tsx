@@ -55,14 +55,14 @@ export default function ContactSection() {
     },
     {
       name: "WhatsApp",
-      value: "+92 7619931243",
-      href: "https://wa.me/927619931243",
+      value: "+91 7619931243",
+      href: "https://wa.me/917619931243",
       icon: <MessageCircle size={24} />,
     },
     {
       name: "Phone",
-      value: "+92 7619931243",
-      href: "tel:+927619931243",
+      value: "+91 7619931243",
+      href: "tel:+917619931243",
       icon: <Phone size={24} />,
     },
   ];
